@@ -61,7 +61,7 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
             context,
             ALARM_REQUEST_CODE,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         alarmManager?.set(
             AlarmManager.ELAPSED_REALTIME_WAKEUP,
@@ -73,13 +73,13 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
     override fun scheduleStormCleanerNotification(delay: Long) {
         val intent = Intent(context, AlarmReceiver::class.java)
             .apply {
-                putExtra(AlarmReceiver.ALARM_TYPE, AlarmReceiver.ALARM_TYPE_SMART_CLEANER)
+                putExtra(AlarmReceiver.ALARM_TYPE, AlarmReceiver.ALARM_TYPE_STORM_CLEANER)
             }
         val pendingIntent = PendingIntent.getBroadcast(
             context,
             ALARM_REQUEST_CODE,
             intent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
         alarmManager?.set(
             AlarmManager.ELAPSED_REALTIME_WAKEUP,

@@ -37,9 +37,14 @@ class ContentFragment : Fragment() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                Toast.makeText(requireContext(), "POST_NOTIFICATIONS разрешены", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "POST_NOTIFICATIONS разрешены", Toast.LENGTH_SHORT)
+                    .show()
             } else {
-                Toast.makeText(requireContext(), "POST_NOTIFICATIONS запрещены. Уведомления не создадутся!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "POST_NOTIFICATIONS запрещены. Уведомления не создадутся!",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -67,8 +72,10 @@ class ContentFragment : Fragment() {
                 requireContext(),
                 Manifest.permission.POST_NOTIFICATIONS
             ) == PackageManager.PERMISSION_GRANTED -> {
-                Toast.makeText(requireContext(), "POST_NOTIFICATIONS разрешены", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "POST_NOTIFICATIONS разрешены", Toast.LENGTH_SHORT)
+                    .show()
             }
+
             else -> {
                 // You can directly ask for the permission.
                 // The registered ActivityResultCallback gets the result of this request.
@@ -96,6 +103,11 @@ class ContentFragment : Fragment() {
             } else {
                 notificationManager.scheduleStormCleanerNotification(NOTIFICATION_DELAY_MS)
             }
+            Toast.makeText(
+                requireContext(),
+                "Запуск через ${NOTIFICATION_DELAY_MS / (60 * 1000)} мин",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 

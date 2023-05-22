@@ -21,7 +21,7 @@ class AlarmReceiver : BroadcastReceiver() {
                 ALARM_TYPE_KEEP_CLEAN -> {
                     notificationManager.sendKeepCleanNotification()
                 }
-                ALARM_TYPE_SMART_CLEANER -> {
+                ALARM_TYPE_STORM_CLEANER -> {
                     notificationManager.sendStormCleanerNotification()
                 }
             }
@@ -31,6 +31,6 @@ class AlarmReceiver : BroadcastReceiver() {
     companion object {
         const val ALARM_TYPE = "alarmType"
         const val ALARM_TYPE_KEEP_CLEAN = 1
-        const val ALARM_TYPE_SMART_CLEANER = 2
+        const val ALARM_TYPE_STORM_CLEANER = 2
     }
 }
