@@ -30,4 +30,22 @@
         android:layout_margin="8dp"
         android:src="@drawable/ic_stop" />
 
+    <FrameLayout
+        android:layout_width="72dp"
+        android:layout_height="40dp">
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminateDrawable="@drawable/notification_button_anim" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="VIEW"
+            android:textColor="@color/white" />
+
+    </FrameLayout>
+
 </LinearLayout>

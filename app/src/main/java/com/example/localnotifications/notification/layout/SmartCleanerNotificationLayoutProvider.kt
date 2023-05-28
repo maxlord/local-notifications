@@ -1,7 +1,10 @@
 package com.example.localnotifications.notification.layout
 
 import android.content.Context
+import android.graphics.drawable.AnimationDrawable
+import android.os.SystemClock
 import android.widget.RemoteViews
+import androidx.core.content.ContextCompat
 import com.example.localnotifications.R
 
 class SmartCleanerNotificationLayoutProvider(

@@ -2,7 +2,9 @@ package com.example.localnotifications.notification
 
 import android.Manifest
 import android.app.AlarmManager
+import android.app.Notification
 import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
@@ -37,7 +39,8 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
                 "Storm Cleaner & File Manager successfully installed",
                 "VIEW",
                 "SCAN FOR SENSITIVE PERMISSIONS"
-            )
+            ),
+            true
         )
     }
 
@@ -48,7 +51,8 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
                 context,
                 "Keep your device clean",
                 "Delete"
-            )
+            ),
+            false
         )
     }
 
@@ -90,7 +94,8 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
 
     private fun createNotification(
         context: Context,
-        layoutProvider: NotificationLayoutProvider
+        layoutProvider: NotificationLayoutProvider,
+        isOngoing: Boolean
     ) {
         // Create an explicit intent for an Activity in your app
         val intent = Intent(context, MainActivity::class.java).apply {
@@ -105,11 +110,16 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
             .setCustomContentView(layoutProvider.buildContentView())
             .setCustomBigContentView(layoutProvider.buildBigContentView())
-            .setContentIntent(pendingIntent)
-            .setOngoing(true)
+            .setOngoing(isOngoing)
             .setAutoCancel(true)
             .setChannelId(NOTIFICATION_CHANNEL_ID)
+            .setCategory(Notification.CATEGORY_CALL)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
+        if (isOngoing) {
+            builder.setFullScreenIntent(pendingIntent, true)
+        } else {
+            builder.setContentIntent(pendingIntent)
+        }
 
         with(NotificationManagerCompat.from(context)) {
             // notificationId is a unique int for each notification that you must define
@@ -121,7 +131,8 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
             ) {
                 return
             }
-            notify(notificationId, builder.build())
+            val notification = builder.build()
+            notify(notificationId, notification)
         }
     }
 
@@ -129,7 +140,7 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val importance = android.app.NotificationManager.IMPORTANCE_DEFAULT
+            val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(
                 NOTIFICATION_CHANNEL_ID,
                 NOTIFICATION_CHANNEL_NAME,
@@ -138,8 +149,8 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
                 description = NOTIFICATION_CHANNEL_DESCRIPTION
             }
             // Register the channel with the system
-            val notificationManager: android.app.NotificationManager =
-                context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+            val notificationManager: NotificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
         }
     }

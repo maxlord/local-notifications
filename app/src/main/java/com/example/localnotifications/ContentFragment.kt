@@ -48,13 +48,10 @@ class ContentFragment : Fragment() {
             }
         }
 
-//    private var alarmReceiver: AlarmReceiver = AlarmReceiver()
-//    private var alarmIntentFilter = IntentFilter()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentContentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -87,6 +84,10 @@ class ContentFragment : Fragment() {
     }
 
     private fun handleUIEvents() {
+//        val anim = AnimationUtils.loadAnimation(requireContext().applicationContext, R.anim.anim_button)
+//        binding.btnSend.startAnimation(anim)
+//        runScaleAnimation(binding.btnSend)
+
         binding.btnSend.setOnClickListener {
             val isKeepClean = binding.rbKeepClean.isChecked
             if (isKeepClean) {
