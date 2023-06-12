@@ -4,6 +4,12 @@ interface LocalNotificationManager {
 
     fun sendKeepChargerConnect1()
 
+    fun sendKeepChargerConnect2()
+
+    fun sendKeepChargerDisconnect1()
+
+    fun sendKeepChargerDisconnect2()
+
     fun scheduleAlarmNotification(alarmType: Int, delay: Long)
 
 

@@ -20,6 +20,9 @@ import com.example.localnotifications.MainActivity
 import com.example.localnotifications.R
 import com.example.localnotifications.alarm.AlarmReceiver
 import com.example.localnotifications.notification.layout.KeepChargerConnect1NotificationLayoutProvider
+import com.example.localnotifications.notification.layout.KeepChargerConnect2NotificationLayoutProvider
+import com.example.localnotifications.notification.layout.KeepChargerDisconnect1NotificationLayoutProvider
+import com.example.localnotifications.notification.layout.KeepChargerDisconnect2NotificationLayoutProvider
 import com.example.localnotifications.notification.layout.KeepCleanNotificationLayoutProvider
 import com.example.localnotifications.notification.layout.NotificationLayoutProvider
 import com.example.localnotifications.notification.layout.SmartCleanerNotificationLayoutProvider
@@ -41,6 +44,30 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
                 35.0,
                 3.9
             ),
+            true
+        )
+    }
+
+    override fun sendKeepChargerConnect2() {
+        createNotification(
+            context,
+            KeepChargerConnect2NotificationLayoutProvider(context),
+            true
+        )
+    }
+
+    override fun sendKeepChargerDisconnect1() {
+        createNotification(
+            context,
+            KeepChargerDisconnect1NotificationLayoutProvider(context),
+            true
+        )
+    }
+
+    override fun sendKeepChargerDisconnect2() {
+        createNotification(
+            context,
+            KeepChargerDisconnect2NotificationLayoutProvider(context, 14, 77),
             true
         )
     }
