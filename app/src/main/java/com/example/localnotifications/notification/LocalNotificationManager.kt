@@ -2,11 +2,16 @@ package com.example.localnotifications.notification
 
 interface LocalNotificationManager {
 
-    fun sendKeepCleanNotification()
+    fun sendKeepChargerConnect1()
 
-    fun sendStormCleanerNotification()
+    fun scheduleAlarmNotification(alarmType: Int, delay: Long)
 
-    fun scheduleKeepCleanNotification(delay: Long)
 
-    fun scheduleStormCleanerNotification(delay: Long)
+//    fun sendKeepCleanNotification()
+//
+//    fun sendStormCleanerNotification()
+//
+//    fun scheduleKeepCleanNotification(delay: Long)
+//
+//    fun scheduleStormCleanerNotification(delay: Long)
 }

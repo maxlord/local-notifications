@@ -3,8 +3,17 @@
     <string name="default_notification_channel_id">channel_id</string>
 
     <string name="content_fragment_label">Content Fragment</string>
-    <string name="radio_keep_clean">Keep Clean</string>
-    <string name="radio_storm_cleaner">Storm Cleaner</string>
+    <string name="radio_keep_charger_connect1">Keep - Подключено зарядное устройство 1</string>
+    <string name="radio_keep_charger_connect2">Keep - Подключено зарядное устройство 2</string>
+    <string name="radio_keep_charger_disconnect1">Keep - Отключено зарядное устройство 1</string>
+    <string name="radio_keep_charger_disconnect2">Keep - Отключено зарядное устройство 2</string>
+    <string name="radio_storm_charger_connect">Storm - Подключено зарядное устройство</string>
+    <string name="radio_storm_charger_disconnect">Strom - Отключено зарядное устройство</string>
+    <string name="radio_storm_charger_connect_new_behavior">Storm - Подключено зарядное устройство - новый механизм</string>
     <string name="action_send">Send</string>
     <string name="action_schedule">Schedule</string>
+    <string name="percent">%</string>
+    <string name="browse">ОБЗОР</string>
+    <string name="keep_charger_connect_message">Зарядка! За питанием ведется наблюдение.</string>
+    <string name="details">ПОДРОБНЕЕ</string>
 </resources>

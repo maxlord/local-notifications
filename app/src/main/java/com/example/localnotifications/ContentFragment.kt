@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.localnotifications.alarm.AlarmReceiver
 import com.example.localnotifications.databinding.FragmentContentBinding
 import com.example.localnotifications.notification.LocalNotificationManager
 import com.example.localnotifications.notification.LocalNotificationManagerImpl
@@ -89,20 +90,59 @@ class ContentFragment : Fragment() {
 //        runScaleAnimation(binding.btnSend)
 
         binding.btnSend.setOnClickListener {
-            val isKeepClean = binding.rbKeepClean.isChecked
-            if (isKeepClean) {
-                notificationManager.sendKeepCleanNotification()
-            } else {
-                notificationManager.sendStormCleanerNotification()
+            if (binding.rbKeepChargerConnect1.isChecked) {
+                notificationManager.sendKeepChargerConnect1()
+            } else if (binding.rbKeepChargerConnect2.isChecked) {
+
+            } else if (binding.rbKeepChargerDisconnect1.isChecked) {
+
+            } else if (binding.rbKeepChargerDisconnect2.isChecked) {
+
+            } else if (binding.rbStormChargerConnect.isChecked) {
+
+            } else if (binding.rbStormChargerDisconnect.isChecked) {
+
+            } else if (binding.rbStormChargerConnectNewBehavior.isChecked) {
+
             }
         }
 
         binding.btnSchedule.setOnClickListener {
-            val isKeepClean = binding.rbKeepClean.isChecked
-            if (isKeepClean) {
-                notificationManager.scheduleKeepCleanNotification(NOTIFICATION_DELAY_MS)
-            } else {
-                notificationManager.scheduleStormCleanerNotification(NOTIFICATION_DELAY_MS)
+            if (binding.rbKeepChargerConnect1.isChecked) {
+                notificationManager.scheduleAlarmNotification(
+                    AlarmReceiver.ALARM_TYPE_KEEP_CHARGER_CONNECT1,
+                    NOTIFICATION_DELAY_MS
+                )
+            } else if (binding.rbKeepChargerConnect2.isChecked) {
+                notificationManager.scheduleAlarmNotification(
+                    AlarmReceiver.ALARM_TYPE_KEEP_CHARGER_CONNECT2,
+                    NOTIFICATION_DELAY_MS
+                )
+            } else if (binding.rbKeepChargerDisconnect1.isChecked) {
+                notificationManager.scheduleAlarmNotification(
+                    AlarmReceiver.ALARM_TYPE_KEEP_CHARGER_DISCONNECT1,
+                    NOTIFICATION_DELAY_MS
+                )
+            } else if (binding.rbKeepChargerDisconnect2.isChecked) {
+                notificationManager.scheduleAlarmNotification(
+                    AlarmReceiver.ALARM_TYPE_KEEP_CHARGER_DISCONNECT2,
+                    NOTIFICATION_DELAY_MS
+                )
+            } else if (binding.rbStormChargerConnect.isChecked) {
+                notificationManager.scheduleAlarmNotification(
+                    AlarmReceiver.ALARM_TYPE_STORM_CHARGER_CONNECT,
+                    NOTIFICATION_DELAY_MS
+                )
+            } else if (binding.rbStormChargerDisconnect.isChecked) {
+                notificationManager.scheduleAlarmNotification(
+                    AlarmReceiver.ALARM_TYPE_STORM_CHARGER_DISCONNECT,
+                    NOTIFICATION_DELAY_MS
+                )
+            } else if (binding.rbStormChargerConnectNewBehavior.isChecked) {
+                notificationManager.scheduleAlarmNotification(
+                    AlarmReceiver.ALARM_TYPE_STORM_CHARGER_CONNECT_NEW_BEHAVIOR,
+                    NOTIFICATION_DELAY_MS
+                )
             }
             Toast.makeText(
                 requireContext(),

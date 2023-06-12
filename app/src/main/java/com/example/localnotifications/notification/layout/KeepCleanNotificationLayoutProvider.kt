@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.RemoteViews
 import com.example.localnotifications.R
 
+@Deprecated("No use in current application")
 class KeepCleanNotificationLayoutProvider(
     private val context: Context,
     private val applicationName: String,

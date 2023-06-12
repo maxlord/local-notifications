@@ -18,11 +18,26 @@ class AlarmReceiver : BroadcastReceiver() {
             val alarmType = intent.getIntExtra(ALARM_TYPE, 0)
             val notificationManager = LocalNotificationManagerImpl(it)
             when (alarmType) {
-                ALARM_TYPE_KEEP_CLEAN -> {
-                    notificationManager.sendKeepCleanNotification()
+                ALARM_TYPE_KEEP_CHARGER_CONNECT1 -> {
+                    notificationManager.sendKeepChargerConnect1()
                 }
-                ALARM_TYPE_STORM_CLEANER -> {
-                    notificationManager.sendStormCleanerNotification()
+                ALARM_TYPE_KEEP_CHARGER_CONNECT2 -> {
+                    TODO()
+                }
+                ALARM_TYPE_KEEP_CHARGER_DISCONNECT1 -> {
+                    TODO()
+                }
+                ALARM_TYPE_KEEP_CHARGER_DISCONNECT2 -> {
+                    TODO()
+                }
+                ALARM_TYPE_STORM_CHARGER_CONNECT -> {
+                    TODO()
+                }
+                ALARM_TYPE_STORM_CHARGER_DISCONNECT -> {
+                    TODO()
+                }
+                ALARM_TYPE_STORM_CHARGER_CONNECT_NEW_BEHAVIOR -> {
+                    TODO()
                 }
             }
         }
@@ -30,7 +45,12 @@ class AlarmReceiver : BroadcastReceiver() {
 
     companion object {
         const val ALARM_TYPE = "alarmType"
-        const val ALARM_TYPE_KEEP_CLEAN = 1
-        const val ALARM_TYPE_STORM_CLEANER = 2
+        const val ALARM_TYPE_KEEP_CHARGER_CONNECT1 = 1
+        const val ALARM_TYPE_KEEP_CHARGER_CONNECT2 = 2
+        const val ALARM_TYPE_KEEP_CHARGER_DISCONNECT1 = 3
+        const val ALARM_TYPE_KEEP_CHARGER_DISCONNECT2 = 4
+        const val ALARM_TYPE_STORM_CHARGER_CONNECT = 5
+        const val ALARM_TYPE_STORM_CHARGER_DISCONNECT = 6
+        const val ALARM_TYPE_STORM_CHARGER_CONNECT_NEW_BEHAVIOR = 7
     }
 }

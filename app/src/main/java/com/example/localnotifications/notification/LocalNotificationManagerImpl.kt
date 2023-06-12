@@ -14,9 +14,12 @@ import android.os.SystemClock
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmapOrNull
 import com.example.localnotifications.MainActivity
 import com.example.localnotifications.R
 import com.example.localnotifications.alarm.AlarmReceiver
+import com.example.localnotifications.notification.layout.KeepChargerConnect1NotificationLayoutProvider
 import com.example.localnotifications.notification.layout.KeepCleanNotificationLayoutProvider
 import com.example.localnotifications.notification.layout.NotificationLayoutProvider
 import com.example.localnotifications.notification.layout.SmartCleanerNotificationLayoutProvider
@@ -29,55 +32,23 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
         alarmManager = context.getSystemService(Context.ALARM_SERVICE) as? AlarmManager?
     }
 
-    override fun sendKeepCleanNotification() {
+    override fun sendKeepChargerConnect1() {
         createNotification(
             context,
-            KeepCleanNotificationLayoutProvider(
+            KeepChargerConnect1NotificationLayoutProvider(
                 context,
-                "Storm Cleaner & File Manager",
-                "Sensitive permission may have been obtained!",
-                "Storm Cleaner & File Manager successfully installed",
-                "VIEW",
-                "SCAN FOR SENSITIVE PERMISSIONS"
+                77.0,
+                35.0,
+                3.9
             ),
             true
         )
     }
 
-    override fun sendStormCleanerNotification() {
-        createNotification(
-            context,
-            SmartCleanerNotificationLayoutProvider(
-                context,
-                "Keep your device clean",
-                "Delete"
-            ),
-            false
-        )
-    }
-
-    override fun scheduleKeepCleanNotification(delay: Long) {
+    override fun scheduleAlarmNotification(alarmType: Int, delay: Long) {
         val intent = Intent(context, AlarmReceiver::class.java)
             .apply {
-                putExtra(AlarmReceiver.ALARM_TYPE, AlarmReceiver.ALARM_TYPE_KEEP_CLEAN)
-            }
-        val pendingIntent = PendingIntent.getBroadcast(
-            context,
-            ALARM_REQUEST_CODE,
-            intent,
-            PendingIntent.FLAG_IMMUTABLE
-        )
-        alarmManager?.set(
-            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime() + delay,
-            pendingIntent
-        )
-    }
-
-    override fun scheduleStormCleanerNotification(delay: Long) {
-        val intent = Intent(context, AlarmReceiver::class.java)
-            .apply {
-                putExtra(AlarmReceiver.ALARM_TYPE, AlarmReceiver.ALARM_TYPE_STORM_CLEANER)
+                putExtra(AlarmReceiver.ALARM_TYPE, alarmType)
             }
         val pendingIntent = PendingIntent.getBroadcast(
             context,

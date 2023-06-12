@@ -7,6 +7,7 @@ import android.widget.RemoteViews
 import androidx.core.content.ContextCompat
 import com.example.localnotifications.R
 
+@Deprecated("No use in current application")
 class SmartCleanerNotificationLayoutProvider(
     private val context: Context,
     private val message: String,

@@ -20,17 +20,53 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
-                android:id="@+id/rbKeepClean"
+                android:id="@+id/rbKeepChargerConnect1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="@string/radio_keep_clean" />
+                android:text="@string/radio_keep_charger_connect1" />
 
             <RadioButton
-                android:id="@+id/rbStormCleaner"
+                android:id="@+id/rbKeepChargerConnect2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/radio_storm_cleaner" />
+                android:checked="false"
+                android:text="@string/radio_keep_charger_connect2" />
+
+            <RadioButton
+                android:id="@+id/rbKeepChargerDisconnect1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/radio_keep_charger_disconnect1" />
+
+            <RadioButton
+                android:id="@+id/rbKeepChargerDisconnect2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/radio_keep_charger_disconnect2" />
+
+            <RadioButton
+                android:id="@+id/rbStormChargerConnect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/radio_storm_charger_connect" />
+
+            <RadioButton
+                android:id="@+id/rbStormChargerDisconnect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/radio_storm_charger_disconnect" />
+
+            <RadioButton
+                android:id="@+id/rbStormChargerConnectNewBehavior"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/radio_storm_charger_connect_new_behavior" />
 
         </RadioGroup>
 
