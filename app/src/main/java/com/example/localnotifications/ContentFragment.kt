@@ -99,11 +99,11 @@ class ContentFragment : Fragment() {
             } else if (binding.rbKeepChargerDisconnect2.isChecked) {
                 notificationManager.sendKeepChargerDisconnect2()
             } else if (binding.rbStormChargerConnect.isChecked) {
-
+                notificationManager.sendStormChargerConnect()
             } else if (binding.rbStormChargerDisconnect.isChecked) {
-
+                notificationManager.sendStormChargerDisconnect()
             } else if (binding.rbStormChargerConnectNewBehavior.isChecked) {
-
+                notificationManager.sendStormChargerNewBehavior()
             }
         }
 

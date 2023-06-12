@@ -11,6 +11,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.SystemClock
+import android.widget.Button
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -26,6 +27,9 @@ import com.example.localnotifications.notification.layout.KeepChargerDisconnect2
 import com.example.localnotifications.notification.layout.KeepCleanNotificationLayoutProvider
 import com.example.localnotifications.notification.layout.NotificationLayoutProvider
 import com.example.localnotifications.notification.layout.SmartCleanerNotificationLayoutProvider
+import com.example.localnotifications.notification.layout.StormChargerConnectNotificationLayoutProvider
+import com.example.localnotifications.notification.layout.StormChargerDisconnectNotificationLayoutProvider
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class LocalNotificationManagerImpl(private val context: Context) : LocalNotificationManager {
 
@@ -70,6 +74,30 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
             KeepChargerDisconnect2NotificationLayoutProvider(context, 14, 77),
             true
         )
+    }
+
+    override fun sendStormChargerConnect() {
+        createNotification(
+            context,
+            StormChargerConnectNotificationLayoutProvider(context),
+            false
+        )
+    }
+
+    override fun sendStormChargerDisconnect() {
+        createNotification(
+            context,
+            StormChargerDisconnectNotificationLayoutProvider(context),
+            false
+        )
+    }
+
+    override fun sendStormChargerNewBehavior() {
+        val bottomSheetDialog = BottomSheetDialog(context)
+        bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog_storm)
+        bottomSheetDialog.findViewById<Button>(R.id.btnLater)?.setOnClickListener { bottomSheetDialog.dismiss() }
+        bottomSheetDialog.findViewById<Button>(R.id.btnAction)?.setOnClickListener {  }
+        bottomSheetDialog.show()
     }
 
     override fun scheduleAlarmNotification(alarmType: Int, delay: Long) {

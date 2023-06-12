@@ -21,23 +21,29 @@ class AlarmReceiver : BroadcastReceiver() {
                 ALARM_TYPE_KEEP_CHARGER_CONNECT1 -> {
                     notificationManager.sendKeepChargerConnect1()
                 }
+
                 ALARM_TYPE_KEEP_CHARGER_CONNECT2 -> {
-                    TODO()
+                    notificationManager.sendKeepChargerConnect2()
                 }
+
                 ALARM_TYPE_KEEP_CHARGER_DISCONNECT1 -> {
-                    TODO()
+                    notificationManager.sendKeepChargerDisconnect1()
                 }
+
                 ALARM_TYPE_KEEP_CHARGER_DISCONNECT2 -> {
-                    TODO()
+                    notificationManager.sendKeepChargerDisconnect2()
                 }
+
                 ALARM_TYPE_STORM_CHARGER_CONNECT -> {
-                    TODO()
+                    notificationManager.sendStormChargerConnect()
                 }
+
                 ALARM_TYPE_STORM_CHARGER_DISCONNECT -> {
-                    TODO()
+                    notificationManager.sendStormChargerDisconnect()
                 }
+
                 ALARM_TYPE_STORM_CHARGER_CONNECT_NEW_BEHAVIOR -> {
-                    TODO()
+                    notificationManager.sendStormChargerNewBehavior()
                 }
             }
         }

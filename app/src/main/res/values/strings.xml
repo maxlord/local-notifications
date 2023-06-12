@@ -19,9 +19,14 @@
     <string name="details">ПОДРОБНЕЕ</string>
     <string name="finish">ЗАВЕРШИТЬ</string>
     <string name="run">ВЫПОЛНИТЬ</string>
+    <string name="later">ПОЗЖЕ</string>
     <string name="keep_charger_disconnect1_message">Отключено зарядное устройство</string>
     <string name="keep_charger_disconnect1_big_title">Отключено зарядное устройство</string>
     <string name="keep_charger_disconnect1_big_message">Рекомендуется перевести приложения в режим ожидания для более долгой работы устройства</string>
     <string name="keep_charger_disconnect2_charge_duration">Продолжительность зарядки:</string>
     <string name="keep_charger_disconnect2_charge_volume">Текущая мощность:</string>
+    <string name="storm_charger_connect_message">Завершите фоновые приложения для быстрой зарядки устройства</string>
+    <string name="storm_charger_disconnect_message">Перевести приложения в режим ожидания</string>
+    <string name="storm_bottom_title">Подключено зарядное устройство</string>
+    <string name="storm_bottom_message">Завершите фоновые приложения для быстрой зарядки устройства</string>
 </resources>

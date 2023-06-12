@@ -10,8 +10,13 @@ interface LocalNotificationManager {
 
     fun sendKeepChargerDisconnect2()
 
-    fun scheduleAlarmNotification(alarmType: Int, delay: Long)
+    fun sendStormChargerConnect()
 
+    fun sendStormChargerDisconnect()
+
+    fun sendStormChargerNewBehavior()
+
+    fun scheduleAlarmNotification(alarmType: Int, delay: Long)
 
 //    fun sendKeepCleanNotification()
 //
