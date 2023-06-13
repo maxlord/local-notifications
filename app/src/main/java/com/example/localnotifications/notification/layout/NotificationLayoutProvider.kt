@@ -1,9 +1,10 @@
 package com.example.localnotifications.notification.layout
 
+import android.app.PendingIntent
 import android.widget.RemoteViews
 
 interface NotificationLayoutProvider {
 
-    fun buildContentView(): RemoteViews
-    fun buildBigContentView(): RemoteViews
+    fun buildContentView(pendingIntent: PendingIntent): RemoteViews
+    fun buildBigContentView(pendingIntent: PendingIntent): RemoteViews
 }

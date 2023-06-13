@@ -8,4 +8,5 @@
     <color name="blue">#0073FF</color>
     <color name="light_blue">#478EF9</color>
     <color name="grey_light">#8B8DA1</color>
+    <color name="bottom_sheet_background">#FBFBFD</color>
 </resources>

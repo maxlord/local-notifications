@@ -29,6 +29,7 @@ import com.example.localnotifications.notification.layout.NotificationLayoutProv
 import com.example.localnotifications.notification.layout.SmartCleanerNotificationLayoutProvider
 import com.example.localnotifications.notification.layout.StormChargerConnectNotificationLayoutProvider
 import com.example.localnotifications.notification.layout.StormChargerDisconnectNotificationLayoutProvider
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class LocalNotificationManagerImpl(private val context: Context) : LocalNotificationManager {
@@ -93,10 +94,12 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
     }
 
     override fun sendStormChargerNewBehavior() {
-        val bottomSheetDialog = BottomSheetDialog(context)
-        bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog_storm)
-        bottomSheetDialog.findViewById<Button>(R.id.btnLater)?.setOnClickListener { bottomSheetDialog.dismiss() }
-        bottomSheetDialog.findViewById<Button>(R.id.btnAction)?.setOnClickListener {  }
+        val bottomSheetDialog = BottomSheetDialog(context).apply {
+            setContentView(R.layout.bottom_sheet_dialog_storm)
+            setCancelable(false)
+            findViewById<Button>(R.id.btnLater)?.setOnClickListener { dismiss() }
+            findViewById<Button>(R.id.btnAction)?.setOnClickListener {  }
+        }
         bottomSheetDialog.show()
     }
 
@@ -134,8 +137,8 @@ class LocalNotificationManagerImpl(private val context: Context) : LocalNotifica
         val builder = NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
             .setSmallIcon(R.mipmap.ic_launcher)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
-            .setCustomContentView(layoutProvider.buildContentView())
-            .setCustomBigContentView(layoutProvider.buildBigContentView())
+            .setCustomContentView(layoutProvider.buildContentView(pendingIntent))
+            .setCustomBigContentView(layoutProvider.buildBigContentView(pendingIntent))
             .setOngoing(isOngoing)
             .setAutoCancel(true)
             .setChannelId(NOTIFICATION_CHANNEL_ID)

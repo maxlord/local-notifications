@@ -1,5 +1,6 @@
 package com.example.localnotifications.notification.layout
 
+import android.app.PendingIntent
 import android.content.Context
 import android.widget.RemoteViews
 import com.example.localnotifications.R
@@ -14,7 +15,7 @@ class KeepCleanNotificationLayoutProvider(
     private val actionBigText: String
 ) : NotificationLayoutProvider {
 
-    override fun buildContentView(): RemoteViews {
+    override fun buildContentView(pendingIntent: PendingIntent): RemoteViews {
         val notificationLayout =
             RemoteViews(context.packageName, R.layout.view_notification_keep_clean_short)
         notificationLayout.setTextViewText(R.id.tvTitle, title)
@@ -23,7 +24,7 @@ class KeepCleanNotificationLayoutProvider(
         return notificationLayout
     }
 
-    override fun buildBigContentView(): RemoteViews {
+    override fun buildBigContentView(pendingIntent: PendingIntent): RemoteViews {
         val notificationLayout =
             RemoteViews(context.packageName, R.layout.view_notification_keep_clean_long)
         notificationLayout.setTextViewText(R.id.tvApplicationName, applicationName)

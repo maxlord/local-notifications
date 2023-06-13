@@ -1,5 +1,6 @@
 package com.example.localnotifications.notification.layout
 
+import android.app.PendingIntent
 import android.content.Context
 import android.graphics.drawable.AnimationDrawable
 import android.os.SystemClock
@@ -14,7 +15,7 @@ class SmartCleanerNotificationLayoutProvider(
     private val actionText: String
 ) : NotificationLayoutProvider {
 
-    override fun buildContentView(): RemoteViews {
+    override fun buildContentView(pendingIntent: PendingIntent): RemoteViews {
         val notificationLayout =
             RemoteViews(context.packageName, R.layout.view_notification_smart_cleaner_short)
         notificationLayout.setTextViewText(R.id.tvMessage, message)
@@ -22,7 +23,7 @@ class SmartCleanerNotificationLayoutProvider(
         return notificationLayout
     }
 
-    override fun buildBigContentView(): RemoteViews {
+    override fun buildBigContentView(pendingIntent: PendingIntent): RemoteViews {
         val notificationLayout =
             RemoteViews(context.packageName, R.layout.view_notification_smart_cleaner_long)
         notificationLayout.setTextViewText(R.id.tvMessage, message)

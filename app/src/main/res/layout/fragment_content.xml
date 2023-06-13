@@ -65,6 +65,7 @@
                 android:id="@+id/rbStormChargerConnectNewBehavior"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:checked="false"
                 android:text="@string/radio_storm_charger_connect_new_behavior" />
 

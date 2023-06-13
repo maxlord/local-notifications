@@ -1,5 +1,6 @@
 package com.example.localnotifications.notification.layout
 
+import android.app.PendingIntent
 import android.content.Context
 import android.widget.RemoteViews
 import com.example.localnotifications.R
@@ -10,17 +11,18 @@ class KeepChargerDisconnect2NotificationLayoutProvider(
     private val volume: Int
 ) : NotificationLayoutProvider {
 
-    override fun buildContentView(): RemoteViews {
+    override fun buildContentView(pendingIntent: PendingIntent): RemoteViews {
         return RemoteViews(
             context.packageName,
             R.layout.view_keep_charger_disconnect2_small
         ).apply {
             setTextViewText(R.id.textChargeDuration, "$duration мин")
             setTextViewText(R.id.textChargeVolume, "$volume %")
+            setOnClickPendingIntent(R.id.btnAction, pendingIntent)
         }
     }
 
-    override fun buildBigContentView(): RemoteViews {
+    override fun buildBigContentView(pendingIntent: PendingIntent): RemoteViews {
         return RemoteViews(
             context.packageName,
             R.layout.view_keep_charger_disconnect2_big
@@ -28,6 +30,7 @@ class KeepChargerDisconnect2NotificationLayoutProvider(
             setTextViewText(R.id.textChargePercent, volume.toString())
             setTextViewText(R.id.textChargeDuration, "$duration мин")
             setTextViewText(R.id.textChargeVolume, "$volume %")
+            setOnClickPendingIntent(R.id.btnAction, pendingIntent)
         }
     }
 }
